@@ -1,0 +1,31 @@
+#ifndef PWM_DEFS_H
+#define PWM_DEFS_H
+
+#define PWM_MAX_FREQ		0x066F
+#define PWM_BEEP_MAX_DUTY	0x7F
+#define PWM_BEEP_BASE_NOTE	46
+#define PWM_BEEP_MAX_NOTE	0x7F
+#define PWM_BEEP_MAX_DURATION	1000
+
+//#define PWM_BUZZ_FREQ		1228	// = 3kHz
+#define PWM_BUZZ_FREQ		614	// = 1.5kHz
+#define PWM_BUZZ_MAX_DURATION	0x0FFF
+
+#define PWM_WORD_TYPE_MASK	0xF000
+#define PWM_WORD_VALUE_MASK	0x0FFF
+#define PWM_FWORD_VALUE_MASK	0x07FF
+#define PWM_BYTE_VALUE_MASK	0x00FF
+#define PWM_WORD_VALUE_BITS	12
+
+#define PWM_WORD(x,y)		((((x) << PWM_WORD_VALUE_BITS) & PWM_WORD_TYPE_MASK) | (y))
+#define PWM_WORD_TYPE(x)	(((x) & PWM_WORD_TYPE_MASK) >> PWM_WORD_VALUE_BITS)
+
+#define PWM_WORD_TYPE_DUTY	0xA
+#define PWM_WORD_TYPE_NOTE	0x8
+#define PWM_WORD_TYPE_FREQ	0xF
+#define PWM_WORD_TYPE_DELAY	0xD
+
+#define PWM_BUFSIZE		256
+#define INC_N_WRAP_PTR(x)	if (++(x) == PWM_BUFSIZE) (x) = 0
+
+#endif

@@ -1,0 +1,15 @@
+# files
+*~
+\#*
+*.[oa]
+*.so
+*.mod*
+*.ko*
+*.symvers
+.*
+
+# dirs
+build
+
+# exceptions
+!.gitignore
